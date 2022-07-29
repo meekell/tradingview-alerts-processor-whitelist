@@ -10,14 +10,22 @@ import {
 import { DatabaseService } from './services/db/db.service';
 import { errorMiddleware } from './utils/errors.utils';
 import routes from './routes';
-const ipfilter = require('express-ipfilter').IpFilter
+import IpFilter = require('express-ipfilter');
 
 const app = express();
+const ipfilter = IpFilter.IpFilter;
 
 const PORT = process.env.PORT || NODE_PORT;
 
 // Allow the following IPs
-const ips = ['127.0.0.1', "::1", "52.89.214.238", "34.212.75.30", "54.218.53.128", "52.32.178.7"];
+const ips = [
+  '127.0.0.1',
+  '::1',
+  '52.89.214.238',
+  '34.212.75.30',
+  '54.218.53.128',
+  '52.32.178.7'
+];
 
 // Create the server
 app.use(ipfilter(ips, { mode: 'allow' }));
