@@ -17,7 +17,7 @@ sudo systemctl enable docker
 echo ''
 echo 'Installing app...'
 echo ''
-curl https://raw.githubusercontent.com/thibaultyou/tradingview-alerts-processor/master/docker-compose.yml --output docker-compose.yml
+curl https://raw.githubusercontent.com/meekell/tradingview-alerts-processor-whitelist/master/docker-compose.yml --output docker-compose.yml
 mkdir -p docker/db
 sudo chown 1001 docker/db
 sudo docker-compose up -d
