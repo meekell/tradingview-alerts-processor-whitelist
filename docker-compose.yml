@@ -1,9 +1,9 @@
 version: "3"
 services:
   tap:
-    image: madamefleur/tradingview-alerts-processor:latest
+    image: meekell/tradingview-alerts-processor-whitelist:latest
     restart: unless-stopped
-    ports: ["0.0.0.0:80:3000"]
+    ports: ["0.0.0.0:80:81"]
     volumes:
       - ./docker/logs:/tap/logs
     links:

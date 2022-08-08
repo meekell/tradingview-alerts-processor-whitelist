@@ -3,6 +3,7 @@ WORKDIR /build
 COPY package.json ./
 COPY tsconfig.json ./
 COPY src ./src
+COPY userdata ./userdata
 RUN npm install
 RUN npm run build
 
