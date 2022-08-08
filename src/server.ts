@@ -11,7 +11,7 @@ import { DatabaseService } from './services/db/db.service';
 import { errorMiddleware } from './utils/errors.utils';
 import routes from './routes';
 import IpFilter = require('express-ipfilter');
-const fs = require('fs');
+import fs = require('fs');
 
 const app = express();
 const ipfilter = IpFilter.IpFilter;
@@ -19,21 +19,17 @@ const ipfilter = IpFilter.IpFilter;
 const PORT = process.env.PORT || NODE_PORT;
 
 // Allow the following IPs
-var ips: string[] = []
+let ips: string[] = [];
 
-try{
+try {
   const data = fs.readFileSync('userdata/whitelist.txt', 'utf-8').toString();
   data.split(/\r?\n/).forEach((line: string) => {
     ips.push(line);
   });
-}catch(e){
+} catch (e) {
   // use defaults
-  ips = [
-    '127.0.0.1',
-    '::1'
-  ]
+  ips = ['127.0.0.1', '::1'];
 }
-
 
 // Create the server
 app.use(ipfilter(ips, { mode: 'allow' }));
