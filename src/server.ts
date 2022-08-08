@@ -26,9 +26,11 @@ try {
   data.split(/\r?\n/).forEach((line: string) => {
     ips.push(line);
   });
+  info('Using whitelist.txt')
 } catch (e) {
   // use defaults
   ips = ['127.0.0.1', '::1'];
+  info('Using default whitelist')
 }
 
 // Create the server
